@@ -1,19 +1,34 @@
 import style from "./Sidebar.module.css"
+import { Link } from "react-router-dom"
 
-const Sidebar = ({ contacts }) => {
+const Sidebar = ({ contacts, setContacts }) => {
+    const handleClear = () => {
+        const response = confirm("This action cannot be reversed!")
+        if (response) {
+            localStorage.removeItem("contacts")
+            setContacts([])
+        }
+    }
     return (
         <nav className={style.sidebar}>
             <div className={style.sidebar_inputs}>
-                <button>New Contact</button>
+                <button>
+                    <Link to={"/"}>New Contact</Link>
+                </button>
                 <input type="text" id="search" placeholder="Search..." />
             </div>
-            <div className={style.contact_list}>
-                {contacts.map((contact) => (
-                    <a href={`/contact/:id`} className={style.contact_item}>
-                        {contact.firstName} {contact.lastName}
-                    </a>
-                ))}
-            </div>
+            {contacts && (
+                <div className={style.contact_list}>
+                    {contacts.map((contact) => (
+                        <Link to={`/contact/${contact.contactId}`} className={style.contact_item} key={contact.contactId}>
+                            {contact.firstName} {contact.lastName}
+                        </Link>
+                    ))}
+                </div>
+            )}
+            <button className={style.deleteBtn} onClick={handleClear}>
+                Clear Contacts
+            </button>
         </nav>
     )
 }
