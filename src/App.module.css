@@ -1,0 +1,16 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+
+/* CONTACT DETAILS */
+.contact_details {
+  grid-column: span 9;
+  padding: 2rem;
+}
+
+.contact_details_btns {
+  display: flex;
+  gap: 1rem;
+}
