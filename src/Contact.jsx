@@ -18,7 +18,9 @@ const Contact = () => {
         if (contacts) {
             // Get the contact to be deleted
             contacts = JSON.parse(contacts)
-            const newContacts = contacts.filter((contact) => contact.contactId !== id)
+            const newContacts = contacts.filter(
+                (contact) => contact.contactId !== id
+            )
             setContacts(newContacts)
             localStorage.setItem("contacts", JSON.stringify(newContacts))
 
@@ -50,14 +52,26 @@ const Contact = () => {
                         {contact.firstName} {contact.lastName}
                     </h1>
                     <p className={style.contact_details_email}>
-                        <span>📧</span>: <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                        <span>📧</span>:{" "}
+                        <a href={`mailto:${contact.email}`}>{contact.email}</a>
                     </p>
                     <p className={style.contact_details_mobile}>
-                        <span>☎️</span>: <a href={`tel: ${contact.phoneNumber}`}>{contact.phoneNumber}</a>
+                        <span>☎️</span>:{" "}
+                        <a href={`tel: ${contact.phoneNumber}`}>
+                            {contact.phoneNumber}
+                        </a>
                     </p>
                     <div className={style.contact_details_btns}>
-                        <button onClick={() => navigate(`/edit/${contact.contactId}`)}>Edit</button>
-                        <button onClick={() => handleDelete(contact.contactId)}>Delete</button>
+                        <button
+                            onClick={() =>
+                                navigate(`/edit/${contact.contactId}`)
+                            }
+                        >
+                            Edit
+                        </button>
+                        <button onClick={() => handleDelete(contact.contactId)}>
+                            Delete
+                        </button>
                     </div>
                 </div>
             )}

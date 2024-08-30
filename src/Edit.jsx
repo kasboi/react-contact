@@ -29,6 +29,7 @@ const Edit = () => {
             // Get the contact to be edited
             contacts = JSON.parse(contacts)
             const userContact = contacts.find((item) => item.contactId === id)
+            
             setUserContact(userContact)
             setFirstName(userContact.firstName)
             setLastName(userContact.lastName)
@@ -55,7 +56,9 @@ const Edit = () => {
         // Create object containing all contact details
         const formData = { firstName, lastName, email, phoneNumber, contactId }
         // Remove the old contact from the contacts array
-        const newContact = contacts.filter((contact) => contact.contactId !== contactId)
+        const newContact = contacts.filter(
+            (contact) => contact.contactId !== contactId
+        )
         // Add the new edited contact to the array
         newContact.push(formData)
 
@@ -96,7 +99,12 @@ const Edit = () => {
                         </label>
                         <label>
                             E-mail:
-                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
                         </label>
                         <label>
                             Phone Number:
