@@ -1,14 +1,31 @@
 import { useEffect, useState } from "react"
 import style from "./Contact.module.css"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams, useOutletContext } from "react-router-dom"
 
 const Contact = () => {
     const { id } = useParams()
+    // Global contacts state passed from App component
+    const [contacts, setContacts] = useOutletContext()
+
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [contact, setContact] = useState(null)
 
     const navigate = useNavigate()
+
+    const handleDelete = (id) => {
+        let contacts = localStorage.getItem("contacts")
+        if (contacts) {
+            // Get the contact to be deleted
+            contacts = JSON.parse(contacts)
+            const newContacts = contacts.filter((contact) => contact.contactId !== id)
+            setContacts(newContacts)
+            localStorage.setItem("contacts", JSON.stringify(newContacts))
+
+            // Redirect to home
+            navigate("/")
+        }
+    }
 
     useEffect(() => {
         let contacts = localStorage.getItem("contacts")
@@ -40,7 +57,7 @@ const Contact = () => {
                     </p>
                     <div className={style.contact_details_btns}>
                         <button onClick={() => navigate(`/edit/${contact.contactId}`)}>Edit</button>
-                        <button>Delete</button>
+                        <button onClick={() => handleDelete(contact.contactId)}>Delete</button>
                     </div>
                 </div>
             )}
