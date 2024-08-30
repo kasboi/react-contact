@@ -1,8 +1,8 @@
-# React + Vite
+# React Contact App
+## Vite + React.js + React-router
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple react app for managing contacts. It uses localStorage API to store user contact in the browser.
 
-Currently, two official plugins are available:
+Main features - Add, edit, delete individual or all contacts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It also includes search functionality allowing the user to filter for contacts based on names or phone number
