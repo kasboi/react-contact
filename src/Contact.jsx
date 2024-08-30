@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import style from "./Contact.module.css"
-import { useOutletContext, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const Contact = () => {
     const { id } = useParams()
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [contact, setContact] = useState(null)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         let contacts = localStorage.getItem("contacts")
@@ -37,7 +39,7 @@ const Contact = () => {
                         <span>☎️</span>: <a href={`tel: ${contact.phoneNumber}`}>{contact.phoneNumber}</a>
                     </p>
                     <div className={style.contact_details_btns}>
-                        <button>Edit</button>
+                        <button onClick={() => navigate(`/edit/${contact.contactId}`)}>Edit</button>
                         <button>Delete</button>
                     </div>
                 </div>

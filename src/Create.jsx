@@ -1,6 +1,6 @@
 import React, { useId, useState } from "react"
 import style from "./Create.module.css"
-import { useOutletContext } from "react-router-dom"
+import { useOutletContext, useNavigate } from "react-router-dom"
 
 const Create = () => {
     const [contacts, setContacts] = useOutletContext()
@@ -9,6 +9,8 @@ const Create = () => {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
+
+    const navigate = useNavigate()
 
     const generateUniqueId = () => {
         return `${Date.now()}-${Math.floor(Math.random() * 10000)}`
@@ -33,6 +35,8 @@ const Create = () => {
         localStorage.setItem("contacts", JSON.stringify(newContacts))
         // Reset form and state afterwards
         resetForm()
+
+        navigate(`/contact/${contactId}`)
     }
 
     return (

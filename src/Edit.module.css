@@ -1,0 +1,28 @@
+.contact_form {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 600px;
+}
+
+form input {
+  border-radius: 5px;
+  border: none;
+  padding: 12px 8px;
+  flex-basis: 50%;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button[type="reset"]{
+  background-color: #ff8787;
+}

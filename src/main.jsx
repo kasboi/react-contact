@@ -6,6 +6,7 @@ import "./index.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Create from "./Create.jsx"
 import Contact from "./Contact.jsx"
+import Edit from "./Edit.jsx"
 
 const router = createBrowserRouter([
     {
@@ -17,9 +18,13 @@ const router = createBrowserRouter([
                 element: <Create />,
             },
             {
-              path: "/contact/:id",
-              element: <Contact />
-            }
+                path: "/contact/:id",
+                element: <Contact />,
+            },
+            {
+                path: "/edit/:id",
+                element: <Edit />,
+            },
         ],
     },
 ])
